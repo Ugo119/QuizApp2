@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+    //This method displays the score summary when submit button is clicked.
     public void displayTotalScore(View view) {
         EditText name = (EditText) findViewById(R.id.candidate_name) ;
         String candidate = name.getText().toString();
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Hi " + candidate + ". Your total score is " + score , Toast.LENGTH_SHORT).show();
     }
 
+    //this method adds up scores from multichoice, edittext filed and single choice questions
     int scoreSummary(boolean fourA, boolean fourB){
         int multScore = 0;
 
@@ -123,7 +126,19 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+    public void resetScores(View view) {
+
+        RadioGroup radioGroup2 = (RadioGroup) findViewById(R.id.question_2);
+        radioGroup2.clearCheck();
+        RadioGroup radioGroup3 = (RadioGroup) findViewById(R.id.question_3);
+        radioGroup3.clearCheck();
+        RadioGroup radioGroup5 = (RadioGroup) findViewById(R.id.question_5);
+        radioGroup5.clearCheck();
+      
+
     }
+}
 
 
 
