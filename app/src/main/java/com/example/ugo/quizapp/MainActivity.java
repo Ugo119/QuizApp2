@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     int singleScore3;
     int singleScore5;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,12 +30,22 @@ public class MainActivity extends AppCompatActivity {
     public void displayTotalScore(View view) {
         EditText name = (EditText) findViewById(R.id.candidate_name) ;
         String candidate = name.getText().toString();
+        CheckBox firstFour = (CheckBox) findViewById(R.id.answer_no4a);
+        boolean answer4A = firstFour.isChecked();
+        CheckBox secondFour = (CheckBox) findViewById(R.id.answer_no4b);
+        boolean answer4B = secondFour.isChecked();
+        int score = scoreSummary(answer4A, answer4B);
 
-        Toast.makeText(this, "Hi " + candidate + ". Your total score is " + scoreSummary() , Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Hi " + candidate + ". Your total score is " + score , Toast.LENGTH_SHORT).show();
     }
 
-    int scoreSummary(){
-        return totalScore + singleScore2 + singleScore3 + singleScore5;
+    int scoreSummary(boolean fourA, boolean fourB){
+        int multScore = 0;
+
+        if (fourA & fourB){multScore = 20;}
+        else{multScore = 0;}
+
+        return totalScore + singleScore2 + singleScore3 + singleScore5 + multScore;
     }
 
     public void checkAnswer2(View view) {
