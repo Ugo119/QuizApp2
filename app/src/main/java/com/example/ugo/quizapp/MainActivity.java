@@ -38,8 +38,22 @@ public class MainActivity extends AppCompatActivity {
         boolean answer4B = secondFour.isChecked();
         int score = scoreSummary(answer4A, answer4B);
 
+
+
         Toast.makeText(this, "Hi " + candidate + ". Your total score is " + score , Toast.LENGTH_SHORT).show();
     }
+
+    public void firstOne(){
+        EditText answerOne = (EditText) findViewById(R.id.candidate_name) ;
+        String questionOne = answerOne.getText().toString();
+        String keyWords[] = new String[4];
+        keyWords[0] = "temporary endeavor";
+        keyWords[1] = "tools";
+        keyWords[2] = "techniques";
+        keyWords[3] = "unique";
+    }
+
+
 
     //this method adds up scores from multichoice, edittext filed and single choice questions
     int scoreSummary(boolean fourA, boolean fourB){
@@ -60,20 +74,16 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.wrong_no2a:
                 if (checked) singleScore2 = initialScore + 0;
-                // Pirates are the best
-                break;
+            break;
             case R.id.answer_no2:
                 if (checked) singleScore2 = initialScore + 20;
-                // Ninjas rule
-                break;
+            break;
             case R.id.wrong_no2b:
                 if (checked) singleScore2 = initialScore + 0;
-                // Pirates are the best
-                break;
+            break;
             case R.id.wrong_no2c:
                 if (checked) singleScore2 = initialScore + 0;
-                // Pirates are the best
-                break;
+             break;
 
         }
     }
@@ -126,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
+    //This method resets the app.
     public void resetScores(View view) {
 
         RadioGroup radioGroup2 = (RadioGroup) findViewById(R.id.question_2);
@@ -135,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         radioGroup3.clearCheck();
         RadioGroup radioGroup5 = (RadioGroup) findViewById(R.id.question_5);
         radioGroup5.clearCheck();
-      
+
 
     }
 }
