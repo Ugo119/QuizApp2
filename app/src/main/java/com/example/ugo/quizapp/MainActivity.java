@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    //This method displays the score summary when submit button is clicked.
+    //This method displays the score summary using Toast when submit button is clicked.
     public void displayTotalScore(View view) {
         EditText name = (EditText) findViewById(R.id.candidate_name) ;
         String candidate = name.getText().toString();
