@@ -20,14 +20,11 @@ public class MainActivity extends AppCompatActivity {
     int sentScore;
     String questionOne;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
     //This method displays the score summary when submit button is clicked.
     public void displayTotalScore(View view) {
         EditText name = (EditText) findViewById(R.id.candidate_name) ;
@@ -36,64 +33,31 @@ public class MainActivity extends AppCompatActivity {
         boolean answer4A = firstFour.isChecked();
         CheckBox secondFour = (CheckBox) findViewById(R.id.answer_no4b);
         boolean answer4B = secondFour.isChecked();
-
-
-
         int score = scoreSummary(answer4A, answer4B) + firstOne();
-
-
-
         Toast.makeText(this, "Hi " + candidate + ". Your total score is " + score , Toast.LENGTH_SHORT).show();
     }
-
     // This method extracts keywords from the EditText view and adds the corresponding score to total.
-     int firstOne(){
-
-
+     int firstOne() {
     EditText answerOne = (EditText) findViewById(R.id.quest1);
     //String keyWords[] = {"temporary endeavor", "tools", "techniques", "unique"};
-    questionOne  = answerOne.getText().toString();
-        if (!questionOne.equals("")) {
-        if (questionOne.toLowerCase().equals("temporary endeavor")) sentScore = 20;
-        else sentScore = 0;
-
+        questionOne  = answerOne.getText().toString();
+           if (!questionOne.equals("")) {
+             if (questionOne.toLowerCase().equals("temporary endeavor")) sentScore = 20;
+             else sentScore = 0;
     }
-
-        return sentScore;
-    /*String keyWords[] = new String[4];
-        keyWords[0] = "temporary endeavor";
-        keyWords[1] = "tools";
-        keyWords[2] = "techniques";
-        keyWords[3] = "unique";
-        boolean ansOneA = keyWords[0].matches("temporary endeavor");
-        boolean ansOneB = keyWords[1].matches("tools");
-        boolean ansOneC = keyWords[2].matches("techniques");
-        boolean ansOneD = keyWords[3].matches("unique");*/
-
-
-   }
-
-
-
+           return sentScore;
+    }
     //this method adds up scores from multichoice and single choice questions
     int scoreSummary(boolean fourA, boolean fourB){
-
-
-        int multScore = 0;
-
-
-        if (fourA & fourB){multScore = 20;}
-        else{multScore = 0;}
-
-        return totalScore + singleScore2 + singleScore3 + singleScore5 + multScore;
+         int multScore = 0;
+         if (fourA & fourB){multScore = 20;}
+         else{multScore = 0;}
+         return totalScore + singleScore2 + singleScore3 + singleScore5 + multScore;
     }
-
    //This method checks for the correct RadioButton clicked and adds the corresponding score.
     public void checkAnswer2(View view) {
         boolean checked = ((RadioButton) view).isChecked();
         singleScore2 = 0;
-
-
         // Check if correct RadioButton was clicked and add score
         switch (view.getId()) {
             case R.id.wrong_no2a:
@@ -108,10 +72,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.wrong_no2c:
                 if (checked) singleScore2 = initialScore + 0;
              break;
-
         }
     }
-
      public void checkAnswer3(View view){
             boolean checked3 = ((RadioButton) view).isChecked();
             singleScore3 = 0;
@@ -119,21 +81,16 @@ public class MainActivity extends AppCompatActivity {
             switch(view.getId()) {
               case R.id.answer_no3:
                   if (checked3) singleScore3 = initialScore + 20;
-
               break;
               case R.id.wrong_no3a:
                    if (checked3) singleScore3 = initialScore + 0;
-
                break;
                case R.id.wrong_no3b:
                     if (checked3) singleScore3 = initialScore + 0;
-
                     break;
                case R.id.wrong_no3c:
                     if (checked3) singleScore3 = initialScore + 0;
-
                 break;
-
             }
         }
      public void checkAnswer5(View view){
@@ -143,21 +100,16 @@ public class MainActivity extends AppCompatActivity {
              switch(view.getId()) {
                  case R.id.wrong_no5a:
                       if (checked3) singleScore5 = initialScore + 0;
-
                  break;
                  case R.id.wrong_no5b:
                       if (checked3) singleScore5 = initialScore + 0;
-
                   break;
                   case R.id.answer_no5:
                       if (checked3) singleScore5 = initialScore + 20;
-
                    break;
                    case R.id.wrong_no5c:
                        if (checked3) singleScore5 = initialScore + 0;
-
                     break;
-
         }
     }
     //This method resets the app.
