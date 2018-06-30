@@ -38,7 +38,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="What is a project"
+                    android:text="What does PMP stand for?"
                     android:textStyle="normal"
                     android:textSize="15sp"
                     android:textColor="#000000"
@@ -49,6 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Answer"
+                    android:inputType="textLongMessage"
                     android:id="@+id/quest1" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -191,6 +192,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Control cost"
+                    android:id="@+id/wrong_4a"
                     android:layout_marginLeft="8dp"
                     android:textColor="#000000"/>
                 <CheckBox
@@ -204,12 +206,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Develop charter"
+                    android:id="@+id/wrong_4b"
                     android:layout_marginLeft="8dp"
                     android:textColor="#000000"/>
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Define activities"
+                    android:id="@+id/wrong_4c"
                     android:layout_marginLeft="8dp"
                     android:textColor="#000000"/>
                 <TextView
@@ -277,18 +281,22 @@
             android:layout_weight="1"
             android:orientation="horizontal">
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Submit"
-                android:layout_marginLeft="24dp"
+                android:layout_marginLeft="56dp"
                 android:id="@+id/summaryScore"
                 android:layout_marginHorizontal="16dp"
                 android:onClick="displayTotalScore"
                 android:textColor="#000000"/>
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginRight="45dp"
                 android:layout_height="wrap_content"
                 android:text="Reset"
+                android:onClick="resetScores"
 
                 android:textColor="#000000"/>
 
