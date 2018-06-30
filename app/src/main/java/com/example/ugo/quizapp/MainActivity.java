@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
     int singleScore3;
     int singleScore5;
     int sentScore;
-    String questionOne;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,27 +29,33 @@ public class MainActivity extends AppCompatActivity {
         EditText name = (EditText) findViewById(R.id.candidate_name) ;
         String candidate = name.getText().toString();
         CheckBox firstFour = (CheckBox) findViewById(R.id.answer_no4a);
-        boolean answer4A = firstFour.isChecked();
         CheckBox secondFour = (CheckBox) findViewById(R.id.answer_no4b);
+        CheckBox third = (CheckBox) findViewById(R.id.wrong_4a);
+        CheckBox fourth = (CheckBox) findViewById(R.id.wrong_4b);
+        CheckBox fifth = (CheckBox) findViewById(R.id.wrong_4c);
+        boolean answer4A = firstFour.isChecked();
         boolean answer4B = secondFour.isChecked();
-        int score = scoreSummary(answer4A, answer4B) + firstOne();
+        boolean answer4C = third.isChecked();
+        boolean answer4D = fourth.isChecked();
+        boolean answer4E = fifth.isChecked();
+        int score = scoreSummary(answer4A, answer4B,answer4C,answer4D,answer4E) + firstOne();
         Toast.makeText(this, "Hi " + candidate + ". Your total score is " + score , Toast.LENGTH_SHORT).show();
     }
     // This method extracts keywords from the EditText view and adds the corresponding score to total.
      int firstOne() {
     EditText answerOne = (EditText) findViewById(R.id.quest1);
-    //String keyWords[] = {"temporary endeavor", "tools", "techniques", "unique"};
-        questionOne  = answerOne.getText().toString();
-           if (!questionOne.equals("")) {
-             if (questionOne.toLowerCase().equals("temporary endeavor")) sentScore = 20;
-             else sentScore = 0;
-    }
+    String answer1 = "Project Management Professional";
+        String questionOne  = answerOne.getText().toString().trim();
+           if (questionOne.equalsIgnoreCase(answer1)) {
+               sentScore = 20;
+           } else sentScore = 0;
+
            return sentScore;
     }
-    //this method adds up scores from multichoice and single choice questions
-    int scoreSummary(boolean fourA, boolean fourB){
+    //this method adds up scores from multichoice and single choice questions.
+    int scoreSummary(boolean fourA, boolean fourB,boolean fourC, boolean fourD, boolean fourE){
          int multScore = 0;
-         if (fourA & fourB){multScore = 20;}
+         if (fourA && fourB &&!fourC && !fourD && !fourE){multScore = 20;}
          else{multScore = 0;}
          return totalScore + singleScore2 + singleScore3 + singleScore5 + multScore;
     }
